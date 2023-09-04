@@ -1,6 +1,6 @@
 import { Offer } from 'src/offers/entities/offer.entity';
 import { User } from 'src/users/entities/user.entity';
-import { BaseEntity } from 'src/utils/base.entity';
+import { BaseEntity } from 'src/utils/baseEntity';
 import { Column, Entity, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()

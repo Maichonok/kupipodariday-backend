@@ -1,5 +1,5 @@
 import { User } from 'src/users/entities/user.entity';
-import { BaseEntity } from 'src/utils/base.entity';
+import { BaseEntity } from 'src/utils/baseEntity';
 import { Wish } from 'src/wishes/entities/wish.entity';
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
 

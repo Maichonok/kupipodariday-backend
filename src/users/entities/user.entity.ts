@@ -1,6 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { Offer } from 'src/offers/entities/offer.entity';
-import { BaseEntity } from 'src/utils/base.entity';
+import { BaseEntity } from 'src/utils/baseEntity';
 import { Wish } from 'src/wishes/entities/wish.entity';
 import { Wishlist } from 'src/wishlistlists/entities/wishlistlist.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
