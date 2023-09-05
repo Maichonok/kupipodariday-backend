@@ -2,7 +2,7 @@ import { Exclude } from 'class-transformer';
 import { Offer } from 'src/offers/entities/offer.entity';
 import { BaseEntity } from 'src/utils/baseEntity';
 import { Wish } from 'src/wishes/entities/wish.entity';
-import { Wishlist } from 'src/wishlistlists/entities/wishlistlist.entity';
+import { Wishlist } from 'src/wishlists/entities/wishlist.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity()

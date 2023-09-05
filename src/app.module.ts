@@ -1,24 +1,42 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersController } from './users/users.controller';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { OffersController } from './offers/offers.controller';
-import { OffersService } from './offers/offers.service';
-import { OffersModule } from './offers/offers.module';
-import { WishesController } from './wishes/wishes.controller';
-import { WishesService } from './wishes/wishes.service';
 import { WishesModule } from './wishes/wishes.module';
-import { WishlistlistsController } from './wishlistlists/wishlistlists.controller';
-import { WishlistlistsService } from './wishlistlists/wishlistlists.service';
-import { WishlistlistsModule } from './wishlistlists/wishlistlists.module';
-import { AuthController } from './auth/auth.controller';
+import { WishlistsModule } from './wishlists/wishlists.module';
+import { OffersModule } from './offers/offers.module';
+import { User } from './users/entities/user.entity';
+import { Wish } from './wishes/entities/wish.entity';
+import { Offer } from './offers/entities/offer.entity';
+import { Wishlist } from './wishlists/entities/wishlist.entity';
 import { AuthModule } from './auth/auth.module';
-import { AuthService } from './auth/auth.service';
 
 @Module({
-  imports: [UsersModule, OffersModule, WishesModule, WishlistlistsModule, AuthModule],
-  controllers: [AppController, UsersController, OffersController, WishesController, WishlistlistsController, AuthController],
-  providers: [AppService, OffersService, WishesService, WishlistlistsService, AuthService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DATABASE_HOST'),
+        port: configService.get('DATABASE_PORT'),
+        database: configService.get('DATABASE_NAME'),
+        schema: configService.get('DATABASE_SCHEMA'),
+        username: configService.get('DATABASE_USERNAME'),
+        password: configService.get('DATABASE_PASSWORD'),
+        entities: [User, Wish, Offer, Wishlist],
+        synchronize: true,
+      }),
+    }),
+    UsersModule,
+    WishesModule,
+    WishlistsModule,
+    OffersModule,
+    AuthModule,
+  ],
+  controllers: [AppController],
+  providers: [],
 })
 export class AppModule {}
