@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/images/logo.859c065a68674e897435ac6a26d344cb.svg" width="200" alt="KPD Logo" />
+  <img src="/images/logo.svg" alt="KPD Logo" />
 </p>
 
 ## Description
@@ -18,7 +18,6 @@ npm i
 
 ```bash
 
-# watch mode
 npm run start:dev
 
 ```
