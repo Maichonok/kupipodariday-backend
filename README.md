@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/images/logo.svg" alt="KPD Logo" />
+  <img src="/src/images/logo.svg" alt="KPD Logo" />
 </p>
 
 ## Description
